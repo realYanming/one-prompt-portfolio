@@ -34,7 +34,7 @@ npm run dev
 Visit `http://localhost:5173` to view the live dashboard.
 
 ## 👨‍💻 About The Author
-Hi, I'm **Yanming**. A Senior UX Designer focusing on Hardware-Software Ecosystems, Audiovisual Streaming Experiences, and AI-driven Product Workflows. 
+
 *   **Twitter/X**: [@realYanming](https://x.com/realYanming)
 *   **Live Demo**: [Live on Vercel](#) *(Link coming soon)*
 

@@ -34,7 +34,6 @@ npm run dev
 并在浏览器中访问 `http://localhost:5173`。
 
 ## 👨‍💻 关于作者
-Hi，我是 **Yanming (闫明)**。一名专注于硬件与软件生态融合、流媒体音视频体验，以及 AI 驱动产品工作流的资深 UX 体验设计师。
 
 *   **Twitter / X**: [@realYanming](https://x.com/realYanming)
 *   **Live Demo (线上预览)**: [Live on Vercel](#) *(链接稍后更新)*
