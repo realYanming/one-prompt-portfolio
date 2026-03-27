@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX | Web3 Product Designer</title>
+    <meta name="description" content="Designing the decentralized future. Portfolio of a Web3 Product Designer.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#050510', // Deep Space Dark
+                        text: '#E0E0FF',       // Holographic White
+                        primary: '#00FFFF',    // Cyber Cyan
+                        secondary: '#7B61FF',  // Electric Purple
+                        cta: '#FF00FF',        // Neon Magenta
+                        glass: 'rgba(255, 255, 255, 0.03)',
+                        glassBorder: 'rgba(123, 97, 255, 0.2)',
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Archivo', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px -10px #00FFFF' },
+                            'to': { boxShadow: '0 0 20px 5px rgba(0, 255, 255, 0.2)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #050510;
+            color: #E0E0FF;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050510;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7B61FF;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(123, 97, 255, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00FFFF 0%, #7B61FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-border-bottom {
+            position: relative;
+        }
+        .gradient-border-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #00FFFF, #FF00FF);
+            transition: width 0.3s ease;
+        }
+        .gradient-border-bottom:hover::after {
+            width: 100%;
+        }
+
+        /* Mesh Gradient Background */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(260,100%,74%,0.1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(340,100%,76%,0.05) 0, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .glow-point {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(123, 97, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-black">
+
+    <!-- Background Elements -->
+    <div class="mesh-bg"></div>
+    <div class="glow-point top-[-100px] left-[-100px] animate-pulse-slow"></div>
+    <div class="glow-point bottom-0 right-0 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-primary transition-colors">
+                ALEX<span class="text-primary">.design</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-12 items-center">
+                <a href="#work" class="text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors gradient-border-bottom">WORK</a>
+                <a href="#about" class="text-sm font-medium tracking-wide text-gray-400 hover:text-white transition-colors gradient-border-bottom">ABOUT</a>
+                <a href="#contact" class="px-6 py-2 rounded-full border border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+                    LET'S TALK
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left: Text -->
+            <div class="space-y-8 z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-glassBorder bg-glass backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Open for new projects</span>
+                </div>
+                
+                <h1 class="font-display font-black text-6xl md:text-8xl leading-[0.9] tracking-tight">
+                    DECODING <br />
+                    <span class="gradient-text">WEB3</span> UX
+                </h1>
+                
+                <p class="text-xl text-gray-400 max-w-lg leading-relaxed">
+                    I bridge the gap between complex blockchain protocols and intuitive human experiences. Specializing in DeFi dashboards, NFT marketplaces, and DAO governance tools.
+                </p>
+                
+                <div class="flex flex-wrap gap-6 pt-4">
+                    <a href="#work" class="group relative px-8 py-4 bg-white text-black font-bold rounded-none hover:bg-primary transition-colors overflow-hidden">
+                        <span class="relative z-10">VIEW SELECTED WORK</span>
+                        <div class="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="px-8 py-4 border border-white/20 hover:border-white transition-colors text-white font-medium flex items-center gap-2">
+                        <span>GITHUB</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Abstract Visual -->
+            <div class="relative h-[600px] hidden lg:flex items-center justify-center">
+                <!-- Decorative Circles -->
+                <div class="absolute w-[500px] h-[500px] border border-white/5 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                <div class="absolute w-[400px] h-[400px] border border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                
+                <!-- Glass Card Float -->
+                <div class="absolute glass-card p-6 rounded-2xl w-80 top-20 right-10 animate-float z-20">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-blue-500"></div>
+                        <div class="text-xs font-mono text-gray-400">ETH/USDC</div>
+                    </div>
+                    <div class="h-24 bg-gradient-to-t from-secondary/20 to-transparent rounded-lg mb-4 border-b border-secondary/50 relative overflow-hidden">
+                         <svg class="absolute bottom-0 w-full h-auto text-secondary" viewBox="0 0 100 30" fill="none" stroke="currentColor" stroke-width="2">
+                             <path d="M0 25 Q 10 20, 20 22 T 40 15 T 60 10 T 80 5 T 100 0" />
+                         </svg>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase">Balance</div>
+                            <div class="text-xl font-bold font-display">$42,069.00</div>
+                        </div>
+                        <div class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded">+12.5%</div>
+                    </div>
+                </div>
+
+                <div class="absolute glass-card p-6 rounded-2xl w-72 bottom-20 left-10 animate-float z-10" style="animation-delay: -2s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center border border-white/10">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Proposal #402</div>
+                            <div class="text-xs text-gray-500">Governance</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-primary h-full w-[75%] shadow-[0_0_10px_#00FFFF]"></div>
+                    </div>
+                    <div class="mt-2 flex justify-between text-xs text-gray-400">
+                        <span>Yes: 75%</span>
+                        <span>No: 25%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl mb-4">SELECTED <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">WORK</span></h2>
+                    <p class="text-gray-400 max-w-sm">Recent projects spanning DeFi, NFT infrastructure, and DAO tooling.</p>
+                </div>
+                <div class="hidden md:block w-32 h-[1px] bg-white/20 mb-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project Card 1 -->
+                <div class="group glass-card rounded-3xl overflow-hidden hover:border-primary/50 transition-colors duration-500 cursor-pointer">
+                    <div class="h-64 bg-gray-900 relative overflow-hidden">
+                        <!-- Placeholder Art -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-black"></div>
+                        <div class="absolute inset-x-0 bottom-0 h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/40 transition-all duration-500"></div>
+                        
+                        <!-- UI Mocks simulation -->
+                        <div class="absolute bottom-[-20px] left-8 right-8 h-40 bg-black/60 backdrop-blur-xl border-t border-l border-r border-white/10 rounded-t-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-display font-bold text-2xl mb-1 group-hover:text-primary transition-colors">Nebula Swap</h3>
+                                <p class="text-gray-400 text-sm">DeFi • UX Research • UI Design</p>
+                            </div>
+                            <div class="p-2 border border-white/10 rounded-full group-hover:bg-primary group-hover:text-black transition-all">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Redesigning the AMM interface to reduce transaction errors by 40%. focusing on slippage visualization and gas estimation.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">Figma</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group glass-card rounded-3xl overflow-hidden hover:border-cta/50 transition-colors duration-500 cursor-pointer md:mt-16">
+                    <div class="h-64 bg-gray-900 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-bl from-purple-900 to-black"></div>
+                        <div class="absolute bottom-0 right-0 w-48 h-48 bg-cta/20 blur-3xl rounded-full group-hover:bg-cta/40 transition-all duration-500"></div>
+                         <!-- UI Mocks simulation -->
+                         <div class="absolute top-10 right-[-20px] w-64 h-40 bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl transform rotate-[-5deg] group-hover:rotate-0 transition-transform duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-display font-bold text-2xl mb-1 group-hover:text-cta transition-colors">Phantasm NFT</h3>
+                                <p class="text-gray-400 text-sm">Marketplace • Dark Mode • Design System</p>
+                            </div>
+                            <div class="p-2 border border-white/10 rounded-full group-hover:bg-cta group-hover:text-black transition-all">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            A gas-optimized NFT marketplace aggregator. Created a scalable dark-themed design system used across web and mobile.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">Storybook</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project Card 3 -->
+                 <div class="group glass-card rounded-3xl overflow-hidden hover:border-secondary/50 transition-colors duration-500 cursor-pointer">
+                    <div class="h-64 bg-gray-900 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900 to-black"></div>
+                        <div class="absolute top-0 left-0 w-40 h-40 bg-secondary/20 blur-3xl rounded-full group-hover:bg-secondary/40 transition-all duration-500"></div>
+                        <div class="flex items-center justify-center h-full">
+                            <div class="w-24 h-24 border-2 border-dashed border-white/20 rounded-full animate-spin-slow group-hover:border-secondary transition-colors"></div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-display font-bold text-2xl mb-1 group-hover:text-secondary transition-colors">Agora DAO</h3>
+                                <p class="text-gray-400 text-sm">Governance • Casting</p>
+                            </div>
+                            <div class="p-2 border border-white/10 rounded-full group-hover:bg-secondary group-hover:text-black transition-all">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Governance dashboard for on-chain voting. Visualizing complex voting power and quadratic funding mechanics.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">Web3.js</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/5 rounded text-xs text-gray-300">Graph</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 text-center">
+                <button class="px-8 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all duration-300 text-sm tracking-widest uppercase">
+                    View Archive
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Stack Section -->
+    <section id="about" class="py-32 relative bg-black/20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-display font-bold text-3xl md:text-4xl mb-12">THE <span class="text-primary">STACK</span></h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <!-- Stack Item -->
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 glass-card rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:border-primary/50">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-400 font-mono">Figma</span>
+                </div>
+                 <!-- Stack Item -->
+                 <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 glass-card rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:border-cta/50">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-400 font-mono">Solidity</span>
+                </div>
+                 <!-- Stack Item -->
+                 <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 glass-card rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:border-secondary/50">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-400 font-mono">Web3</span>
+                </div>
+                 <!-- Stack Item -->
+                 <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 glass-card rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:border-blue-500/50">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-gray-400 font-mono">React</span>
+                </div>
+            </div>
+
+            <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <div>
+                   <h3 class="font-display font-bold text-2xl mb-4">Philosophy</h3>
+                   <p class="text-gray-400 leading-relaxed">
+                       Web3 shouldn't feel like a command line interface. I believe in abstracting complexity without hiding the mechanics. My goal is to build interfaces that feel like magic—liquid, transparent, and undeniably secure.
+                   </p>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-2xl mb-4">Experience</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                             <span class="font-bold">Product Designer @ Uniswap</span>
+                             <span class="text-sm text-gray-500 font-mono">2024 - Present</span>
+                        </li>
+                        <li class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                            <span class="font-bold">UI Lead @ Aave</span>
+                            <span class="text-sm text-gray-500 font-mono">2022 - 2024</span>
+                       </li>
+                       <li class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                        <span class="font-bold">Freelance</span>
+                        <span class="text-sm text-gray-500 font-mono">2020 - 2022</span>
+                   </li>
+                    </ul>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+            
+            <h2 class="font-display font-bold text-5xl md:text-7xl mb-8 tracking-tighter">
+                LET'S BUILD <br />
+                <span class="text-white/20">THE FUTURE.</span>
+            </h2>
+
+            <div class="flex gap-6 mb-12">
+                <a href="#" class="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </a>
+                <a href="#" class="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+                <a href="#" class="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+
+            <p class="text-gray-600 text-sm font-mono">
+                &copy; 2026 Alex Design. Built with pure logic & magic.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scrolled State
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/50', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+            } else {
+                nav.classList.remove('bg-black/50', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+            }
+        });
+
+        // Entrance Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('#about h2, #about .flex > div, #about .grid > div, footer h2');
+            elements.forEach(el => {
+                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
