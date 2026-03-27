@@ -1,5 +1,7 @@
 #  One-Prompt Portfolio / UX Design System
 
+**English** | [简体中文](./README_CN.md)
+
 > A minimal, interaction-driven UX Design Portfolio generated entirely through a single, strict **Design System Prompt** framework. This project serves as an ongoing experiment in "Vibe Coding" and AI-driven UI/UX construction.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) 
